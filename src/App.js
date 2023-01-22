@@ -23,6 +23,8 @@ export function Noodles() {
           fill="white"
           stroke="black"
         />
+
+        {/* //randomly map the noodles */}
         {noodles.map((noodle, i) => {
           const startAngle = Math.random() * 2 * Math.PI;
           let endAngle = startAngle + Math.random() * Math.PI - Math.PI / 2;
@@ -33,12 +35,13 @@ export function Noodles() {
             endAngle = startAngle + Math.asin((endRadius - startRadius) / dishRadius);
           }
 
+          // set dish radius
           const startX = dishX + startRadius * Math.cos(startAngle);
           const startY = dishY + startRadius * Math.sin(startAngle);
           const endX = dishX + endRadius * Math.cos(endAngle);
           const endY = dishY + endRadius * Math.sin(endAngle);
 
-          // Inside control point
+          // Inside control point for tangents 
           const insideControlRadius = dishRadius / 2;
           const insideControlX = dishX + insideControlRadius * Math.cos(endAngle + Math.PI / 2);
           const insideControlY = dishY + insideControlRadius * Math.sin(endAngle + Math.PI / 2);
